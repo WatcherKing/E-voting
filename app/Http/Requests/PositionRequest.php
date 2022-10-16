@@ -24,8 +24,8 @@ class PositionRequest extends FormRequest
     public function rules()
     {
         return [
-            'local_gov_id' => ['exists:local_govs,id'],
-            'state_id' => ['exists:states,id'],
+            'states_id' => ['nullable'],
+            'local_govs_id' => ['nullable'],
             'name' => ['required'],
         ];
     }

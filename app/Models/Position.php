@@ -18,20 +18,20 @@ class Position extends Model
     use HasFactory;
 
     protected $fillable = [
-        'local_gov_id',
-        'state_id',
+        'local_govs_id',
+        'states_id',
         'name',
         'is_active',
     ];
 
     public function local_gov()
     {
-        return $this->belongsTo(LocalGov::class);
+        return $this->belongsTo(LocalGov::class, 'local_govs_id');
     }
 
     public function state()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(State::class, 'states_id');
     }
 
     public function contestants()

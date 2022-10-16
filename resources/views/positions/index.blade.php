@@ -27,6 +27,7 @@
             <th scope="col">National</th>
             <th scope="col">State</th>
             <th scope="col">LGA</th>
+            <th scope="col">Active</th>
             <th scope="col"></th>
 
           </tr>
@@ -36,12 +37,45 @@
             <tr>
               <th scope="row">{{ $position->id }}</th>
               <td>{{ $position->name }}</td>
-                <td>{{ (!$position->local_gov_id && !$position->state_id) ? 'Yes' : 'No'; }}</td>
-                <td>{{ ($position->state_id) ? 'Yes' : 'No'; }}</td>
-                <td>{{ ($position->local_gov_id) ? 'Yes' : 'No'; }}</td>
+                <td>
+                    @if ($position->states_id === NULL)
+                        Yes
+                    @else
+                        No
+                    @endif
+                </td>
+                <td>
+                    @if ($position->states_id !== NULL)
+                        Yes | {{ $position->state->name }}
+                    @else
+                        No
+                    @endif
+                </td>
+                <td>
+                    @if (isset($position->local_govs_id))
+                        <span>Yes | {{ $position->local_gov->name }}</span>
+                    @else
+                        No
+                    @endif
+                </td>
+                <td>
+                    @if ($position->is_active === 1)
+                        <form action="{{ route('position.active', $position->id) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-success">Active</button>
+
+                        </form>
+                    @else
+                        <form action="{{ route('position.active', $position->id) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-danger">Inactive</button>
+
+                        </form>
+                    @endif
+                </td>
               <td>
                 <div class="d-flex align-items-center justify-content-end">
-                  <a href="" type="button"
+                  <a href="{{ route('positions.show', $position->id) }}" type="button"
                     class="btn btn-sm btn-icon btn-icon-start btn-outline-info ms-1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20"
                       fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -68,6 +102,7 @@
                     </svg>
                     <span class="d-none d-xxl-inline-block">Edit</span>
                   </button>
+                  @include('positions.modal.edit')
                   <a href="#" data-bs-toggle="modal" data-bs-target="#deletePosition{{ $position->id }}"
                     class="btn btn-sm btn-icon btn-icon-start btn-outline-danger ms-1" type="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20"
@@ -83,6 +118,7 @@
                     </svg>
                     <span class="d-none d-xxl-inline-block">Delete</span>
                   </a>
+                    @include('positions.modal.delete')
                 </div>
               </td>
             </tr>
@@ -103,5 +139,5 @@
         </nav>
     </div>
   </div>
-
+@include('positions.modal.create')
 @endsection

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('contestants', function (Blueprint $table) {
             $table->id();
             $table->foreignId('position_id')->constrained('positions');
+            $table->foreignId('state_id')->constrained('states');
             $table->foreignId('local_gov_id')->constrained('local_govs');
             $table->string('name');
             $table->integer('age')->default(18);

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('positions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('local_gov_id')->constrained('local_govs')->nullable();
-            $table->foreignId('state_id')->constrained('states')->nullable();
+            $table->foreignId('states_id')->nullable();
+            $table->foreignId('local_govs_id')->nullable();
             $table->string('name');
             $table->boolean('is_active')->default(true);
             $table->timestamps();

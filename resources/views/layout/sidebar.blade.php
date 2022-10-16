@@ -60,7 +60,7 @@
               </a>
             </li>
             <li>
-              <a href="#pages" data-href="/Pages">
+              <a href="{{ route('contestants') }}" data-href="/Pages">
                 <i data-acorn-icon="notebook-1" class="icon" data-acorn-size="18"></i>
                 <span class="label">Contestants</span>
               </a>

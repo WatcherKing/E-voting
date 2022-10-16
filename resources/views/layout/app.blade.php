@@ -51,6 +51,8 @@
   <link rel="stylesheet" href="{{ asset('temp/css/styles.css') }}" />
   <link rel="stylesheet" href="{{ asset('temp/css/main.css') }}" />
   <!-- Template Base Styles End -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.css" rel="stylesheet">
+
   <script src="{{ asset('temp/js/base/loader.js') }}"></script>
 </head>
 
@@ -72,14 +74,14 @@
             <div class="col-12 col-sm-6">
               <p class="mb-0 text-muted text-medium">Aspire Univas InterSystems 2022</p>
             </div>
-            
+
           </div>
         </div>
       </div>
     </footer>
     <!-- Layout Footer End -->
   </div>
-  
+
   <!-- Vendor Scripts Start -->
   <script src="{{ asset('temp/js/vendor/jquery-3.5.1.min.js') }}"></script>
   <script src="{{ asset('temp/js/vendor/bootstrap.bundle.min.js') }}"></script>
@@ -100,6 +102,8 @@
   <script src="{{ asset('temp/js/common.js') }}"></script>
   <script src="{{ asset('temp/js/scripts.js') }}"></script>
   <!-- Page Specific Scripts End -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.23.0/slimselect.min.js"></script>
+
 @stack('js')
 
 </body>

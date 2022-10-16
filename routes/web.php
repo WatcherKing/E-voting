@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', ['as' => 'login', 'uses' => 'App\Http\Controllers\Auth\LoginController@index']);
 Route::post('/login-user', ['as' => 'login.post', 'uses' => 'App\Http\Controllers\Auth\LoginController@login']);
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/logout', ['as' => 'logout', 'uses' => 'App\Http\Controllers\Auth\LoginController@logout']);
     Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'App\Http\Controllers\DashboardController@index']);
+    Route::get('/positions', ['as' => 'positions', 'uses' => 'App\Http\Controllers\PositionController@index']);
 
 });

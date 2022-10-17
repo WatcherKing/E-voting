@@ -8,6 +8,8 @@ use App\Models\Position;
 use App\Models\State;
 use App\Models\LocalGov;
 use App\Models\User;
+use App\Models\Contestant;
+use App\Models\Vote;
 use Auth;
 
 class PositionController extends Controller

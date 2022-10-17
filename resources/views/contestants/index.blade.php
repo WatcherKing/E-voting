@@ -28,7 +28,7 @@
             <th scope="col">State/LGA</th>
             <th scope="col">Contestant No</th>
             <th scope="col">Party</th>
-            <th scope="col">Active</th>
+            <th scope="col">Status</th>
             <th scope="col"></th>
 
           </tr>
@@ -45,7 +45,7 @@
                     {{ $contestant->state->name }} | {{ $contestant->local_gov->name }}
                 </td>
                 <td>
-                    {{ $contestant->contestant_no }}
+                    {{ decrypt($contestant->contestant_no) }}
                 </td>
                 <td>
                     {{ $contestant->party }}

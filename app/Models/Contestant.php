@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\{
     LocalGov,
     Position,
-    Vote,
+    Votes,
     User,
 };
 
@@ -45,7 +45,7 @@ class Contestant extends Model
 
     public function votes()
     {
-        return $this->hasMany(Vote::class);
+        return $this->hasMany(Votes::class);
     }
 
     public function voters()

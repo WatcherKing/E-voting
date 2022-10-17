@@ -107,7 +107,7 @@
                     {{ $contestant->party }}
                 </td>
                 <td>{{ $contestant->name }}</td>
-                <td>{{ $contestant->contestant_no }}</td>
+                <td>{{ decrypt($contestant->contestant_no) }}</td>
                 <td>{{ $contestant->age }}</td>
                 <td>
                     {{ $contestant->votes->count() }}

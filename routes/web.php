@@ -31,4 +31,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/local-govs/{state}', ['as' => 'local-govs', 'uses' => 'App\Http\Controllers\PositionController@getLocalGovs']);
 
     Route::get('/contestants', ['as' => 'contestants', 'uses' => 'App\Http\Controllers\ContestantController@index']);
+    Route::get('/contestants/{contestant}/show', ['as' => 'contestants.show', 'uses' => 'App\Http\Controllers\ContestantController@show']);
+    Route::post('/contestant/store', ['as' => 'contestant.store', 'uses' => 'App\Http\Controllers\ContestantController@store']);
+    Route::post('/contestant/{contestant}/update', ['as' => 'contestant.update', 'uses' => 'App\Http\Controllers\ContestantController@update']);
+    Route::delete('/contestant/{contestant}/delete', ['as' => 'contestant.delete', 'uses' => 'App\Http\Controllers\ContestantController@destroy']);
+    Route::post('/contestant/{contestant}/active', ['as' => 'contestant.active', 'uses' => 'App\Http\Controllers\ContestantController@updateStatus']);
 });

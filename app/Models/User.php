@@ -12,7 +12,7 @@ use App\Models\{
     State,
     Position,
     Vote,
-    Voter,
+    Voters,
     Contestant,
     LocalGov,
 };
@@ -28,7 +28,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
         'voter_no',
         'password',
     ];
@@ -43,15 +42,6 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
     public function votes()
     {
         return $this->hasMany(Vote::class);
@@ -59,7 +49,7 @@ class User extends Authenticatable
 
     public function voter()
     {
-        return $this->belongsTo(Voter::class);
+        return $this->belongsTo(Voters::class);
     }
 
     public function contestants()
@@ -99,7 +89,7 @@ class User extends Authenticatable
 
     public function local_voters()
     {
-        return $this->hasManyThrough(Voter::class, LocalGov::class);
+        return $this->hasManyThrough(Voters::class, LocalGov::class);
     }
 
     public function state_votes()
@@ -119,7 +109,7 @@ class User extends Authenticatable
 
     public function state_voters()
     {
-        return $this->hasManyThrough(Voter::class, State::class);
+        return $this->hasManyThrough(Voters::class, State::class);
     }
 
     public function state()

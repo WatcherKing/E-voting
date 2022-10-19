@@ -11,6 +11,7 @@ use App\Models\{
     User,
     Contestant,
     LocalGov,
+    Voters,
 };
 
 class Votes extends Model
@@ -23,32 +24,31 @@ class Votes extends Model
         'position_id',
         'local_gov_id',
         'state_id',
-        'is_active',
     ];
 
-    public function voter()
+    public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function contestant()
     {
-        return $this->belongsTo(Contestant::class);
+        return $this->belongsTo(Contestant::class, 'contestant_id');
     }
 
     public function position()
     {
-        return $this->belongsTo(Position::class);
+        return $this->belongsTo(Position::class, 'position_id');
     }
 
     public function local_gov()
     {
-        return $this->belongsTo(LocalGov::class);
+        return $this->belongsTo(LocalGov::class, 'local_gov_id');
     }
 
     public function state()
     {
-        return $this->belongsTo(State::class);
+        return $this->belongsTo(State::class, 'state_id');
     }
 
 

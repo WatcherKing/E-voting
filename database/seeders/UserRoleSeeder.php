@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Crypt;
 
 class UserRoleSeeder extends Seeder
 {
@@ -18,15 +19,16 @@ class UserRoleSeeder extends Seeder
     public function run()
     {
         $user1 = User::create([
-            'name' => 'admin',
-            'email' => 'voting@gmail.com',
+            'name' => Crypt::encrypt('admin'),
             'voter_no' => '123456789012345678',
             'password' => bcrypt('s3cret55')
         ]);
 
+        // generate a voter with name and vin same as user1 name and voter_no
+
+
         $user2 = User::create([
-            'name' => 'voter1',
-            'email' => 'voter@gmail.com',
+            'name' => Crypt::encrypt('voter1'),
             'voter_no' => '123456798765432109',
             'password' => bcrypt('1234567890')
         ]);

@@ -19,6 +19,7 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
+        // dd($request->all());
         if (Auth::attempt($request->only('voter_no', 'password'))) {
             $user = Auth::user();
             if($user->hasRole('admin')){

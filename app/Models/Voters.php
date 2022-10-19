@@ -24,6 +24,7 @@ class Voters extends Model
         'state_id',
         'user_id',
         'name',
+        'vin',
         'age',
         'image',
         'dob',
@@ -36,8 +37,17 @@ class Voters extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function state()
+    {
+        return $this->belongsTo(State::class, 'state_id');
+    }
+
+    public function local_gov()
+    {
+        return $this->belongsTo(LocalGov::class, 'local_gov_id');
+    }
 
 }

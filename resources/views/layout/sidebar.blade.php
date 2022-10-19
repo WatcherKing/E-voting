@@ -8,7 +8,7 @@
           <a href="#" class="d-flex user position-relative" data-bs-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <img class="profile" alt="profile" src="{{ asset('temp/img/user.png') }}" />
-            <div class="name">{{ $user->name }}</div>
+            <div class="name">{{ decrypt($user->name) }}</div>
           </a>
           <div class="dropdown-menu dropdown-menu-end user-menu wide">
 
@@ -66,13 +66,13 @@
               </a>
             </li>
             <li>
-              <a href="#blocks" data-href="/Blocks">
+              <a href="{{ route('voters') }}" data-href="/Blocks">
                 <i data-acorn-icon="grid-5" class="icon" data-acorn-size="18"></i>
                 <span class="label">Voters</span>
               </a>
             </li>
             <li class="mega">
-              <a href="#interface" data-href="/Interface">
+              <a href="{{ route('vote') }}" data-href="/Interface">
                 <i data-acorn-icon="pocket-knife" class="icon" data-acorn-size="18"></i>
                 <span class="label">Vote</span>
               </a>
@@ -86,7 +86,7 @@
               </a>
             </li>
             <li class="mega">
-              <a href="#interface" data-href="/Interface">
+              <a href="{{ route('vote') }}" data-href="/Interface">
                 <i data-acorn-icon="pocket-knife" class="icon" data-acorn-size="18"></i>
                 <span class="label">Vote</span>
               </a>

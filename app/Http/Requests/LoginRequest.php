@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Crypt;
 
 class LoginRequest extends FormRequest
 {
@@ -23,9 +24,10 @@ class LoginRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            'voter_no' => ['required', 'min:18', 'max:20', 'exists:users,voter_no'],
-            
+            'voter_no' => ['required', 'exists:users,voter_no'],
+
             'password' => ['required', 'min:8', 'max:20'],
         ];
     }

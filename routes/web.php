@@ -36,4 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/contestant/{contestant}/update', ['as' => 'contestant.update', 'uses' => 'App\Http\Controllers\ContestantController@update']);
     Route::delete('/contestant/{contestant}/delete', ['as' => 'contestant.delete', 'uses' => 'App\Http\Controllers\ContestantController@destroy']);
     Route::post('/contestant/{contestant}/active', ['as' => 'contestant.active', 'uses' => 'App\Http\Controllers\ContestantController@updateStatus']);
+
+    Route::get('/voters', ['as' => 'voters', 'uses' => 'App\Http\Controllers\VotersController@index']);
+    Route::get('/voters/{voter}/show', ['as' => 'voters.show', 'uses' => 'App\Http\Controllers\VotersController@show']);
+    Route::post('/voter/store', ['as' => 'voter.store', 'uses' => 'App\Http\Controllers\VotersController@store']);
+    Route::post('/voter/{voter}/update', ['as' => 'voter.update', 'uses' => 'App\Http\Controllers\VotersController@update']);
+    Route::get('/voter/active', ['as' => 'voters.active', 'uses' => 'App\Http\Controllers\VotersController@approveVoters']);
+
+    Route::get('/vote', ['as' => 'vote', 'uses' => 'App\Http\Controllers\VotesController@index']);
 });

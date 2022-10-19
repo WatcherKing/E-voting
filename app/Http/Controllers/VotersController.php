@@ -123,4 +123,20 @@ class VotersController extends Controller
         return redirect()->route('voters')->withStatus('Voters Approved Successfully');
     }
 
+    public function unapproveVoters()
+    {
+        $voters = Voters::where('status', 1)->get();
+        foreach ($voters as $voter) {
+            $voter->update(['status' => 0]);
+        }
+        return redirect()->route('voters')->withStatus('Voters Disapproved Successfully');
+    }
+
+    // create a func to get a voter and change the status to 0
+    public function disapproveVoter(Voters $voter)
+    {
+        $voter->update(['status' => 0]);
+        return redirect()->route('vote')->withStatus('Voted Successfully');
+    }
+
 }

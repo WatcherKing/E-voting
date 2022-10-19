@@ -26,6 +26,13 @@
 
         {{-- <a href="{{ route('voters.active') }}" type="button" class="btn btn-outline-primary" >Activate Voting</a> --}}
         <!-- Tour Button End -->
+
+        @if (count($not_voted_positions) === 0)
+        <form action="{{ route('voter.deactivate', $voter->id) }}" method="post">
+            @csrf
+            <button type="submit" class="btn btn-outline-primary" >Deactivate Voting</button>
+          </form>
+        @endif
       </div>
     </div>
   </div>

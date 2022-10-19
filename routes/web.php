@@ -42,6 +42,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/voter/store', ['as' => 'voter.store', 'uses' => 'App\Http\Controllers\VotersController@store']);
     Route::post('/voter/{voter}/update', ['as' => 'voter.update', 'uses' => 'App\Http\Controllers\VotersController@update']);
     Route::get('/voter/active', ['as' => 'voters.active', 'uses' => 'App\Http\Controllers\VotersController@approveVoters']);
+    Route::get('/voter/deactivate', ['as' => 'voters.deactivate', 'uses' => 'App\Http\Controllers\VotersController@unapproveVoters']);
+    Route::post('/voter/{voter}/deactivate', ['as' => 'voter.deactivate', 'uses' => 'App\Http\Controllers\VotersController@disapproveVoter']);
+
 
     Route::get('/vote', ['as' => 'vote', 'uses' => 'App\Http\Controllers\VotesController@index']);
+    Route::post('/vote/{position}/store', ['as' => 'vote.store', 'uses' => 'App\Http\Controllers\VotesController@store']);
+    Route::post('/vote/{vote}/edit', ['as' => 'vote.update', 'uses' => 'App\Http\Controllers\VotesController@update']);
 });

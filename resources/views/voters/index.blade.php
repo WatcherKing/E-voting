@@ -11,6 +11,7 @@
         <a type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#createVoters">Register
           Voters</a>
         <a href="{{ route('voters.active') }}" type="button" class="btn btn-outline-primary" >Activate Voting</a>
+        <a href="{{ route('voters.deactivate') }}" type="button" class="btn btn-outline-warning" >Deactivate Voting</a>
         <!-- Tour Button End -->
       </div>
     </div>
